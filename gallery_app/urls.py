@@ -6,7 +6,7 @@ from gallery_app.views import AlbumView, PhotoView
 
 
 urlpatterns = [
-        path('albums/', AlbumView.as_view(), name= 'album'),
+        path('albums/', AlbumView.as_view(), name='album'),
         path('photos/', PhotoView.as_view(), name='photo'),
     ]
 

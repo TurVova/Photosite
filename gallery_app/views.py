@@ -3,7 +3,7 @@ from gallery_app.models import Album, Photo
 
 
 class AlbumView(TemplateView):
-    template_name = 'photo/album.html'
+    template_name = 'gallery/album.html'
 
     def get_context_data(self, **kwargs):
         album_list = Album.objects.all()
@@ -13,10 +13,10 @@ class AlbumView(TemplateView):
 
 
 class PhotoView(TemplateView):
-    template_name = 'photo/photo.html'
+    template_name = 'gallery/photo.html'
 
     def get_context_data(self, **kwargs):
-        album_list = Photo.objects.all()
+        photo_list = Photo.objects.all()
         context = { 'photos': photo_list,
         }
         return context
