@@ -7,8 +7,9 @@ class AlbumView(TemplateView):
 
     def get_context_data(self, **kwargs):
         album_list = Album.objects.all()
-        context = { 'albums': album_list,
-        }
+        context = {
+                'albums': album_list,
+            }
         return context
 
 
@@ -17,6 +18,7 @@ class PhotoView(TemplateView):
 
     def get_context_data(self, **kwargs):
         photo_list = Photo.objects.all()
-        context = { 'photos': photo_list,
-        }
+        context = {
+                'photos': photo_list,
+            }
         return context
