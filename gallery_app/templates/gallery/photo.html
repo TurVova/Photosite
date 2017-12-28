@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% for photo in photos %}
-    {% if photo.image %}
-      <h1>{{ photo.name }}</h1>
-      <a href="{{ photo.image.url }}">
-        <img src="{{ photo.image.url }}" class="img-responsive" >
-      </a>
+  {% for photo in photo_list %}
+    {% if photo.name %}
+        <h1>{{ photo.name }}</h1>
+        <a href="{{ photo.image.url }}">
+          <img src="{{ photo.image.url }}" class="img-responsive" >
+        </a>
     {% endif %}
   {% endfor %}
 {% endblock content %}

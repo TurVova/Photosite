@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% for album in albums %}
+  {% for album in album_list %}
     {% if album.image %}
       <h1>{{ album.name }}</h1>
       <a href="{{ album.image.url }}">

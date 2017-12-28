@@ -6,10 +6,9 @@ class AlbumView(TemplateView):
     template_name = 'gallery/album.html'
 
     def get_context_data(self, **kwargs):
-        album_list = Album.objects.all()
-        context = {
-                'albums': album_list,
-            }
+        context = super().get_context_data(**kwargs)
+        context['album_list'] = Album.objects.all()
+
         return context
 
 
@@ -17,8 +16,7 @@ class PhotoView(TemplateView):
     template_name = 'gallery/photo.html'
 
     def get_context_data(self, **kwargs):
-        photo_list = Photo.objects.all()
-        context = {
-                'photos': photo_list,
-            }
+        context = super().get_context_data(**kwargs)
+        context['photo_list'] = Photo.objects.all()
+
         return context
