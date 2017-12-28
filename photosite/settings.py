@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'gallery_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gallery_app',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +65,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+    },
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [],
+        'APP_DIRS': True,
     },
 ]
 
@@ -122,4 +127,4 @@ STATIC_URL = '/static/'
 
 
 MEDIA_URL = '/album/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "gallery_app/hotosite/mediafiles")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "gallery_app/mediafiles")
