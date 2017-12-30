@@ -3,9 +3,11 @@
 {% block content %}
   {% for album in album_list %}
     {% if album.image %}
-      <h1>{{ album.name }}</h1>
       <a href="{{ album.image.url }}">
         <img src="{{ album.image.url }}" class="img-responsive" >
+      </a>
+      <a href="{% url 'photo' %}">
+        <h1>{{ album.name }}</h1>
       </a>
     {% endif %}
   {% endfor %}

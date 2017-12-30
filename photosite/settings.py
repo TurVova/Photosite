@@ -126,5 +126,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-MEDIA_URL = '/album/'
+MEDIA_URL = '/photo/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "gallery_app/mediafiles")
