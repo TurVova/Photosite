@@ -23,7 +23,7 @@ class PhotoView(TemplateView):
         return context
 
 def custom_404(request):
-    return render(request, 'custom_404.html')
+    return render(request, '404.html')
 
 def custom_500(request):
-    return render(request, 'custom_500.html')
+    return render(request, '500.html')
