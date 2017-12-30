@@ -25,7 +25,7 @@ SECRET_KEY = 'bakxt2b_eyk#+*i7-r5-tc28mk8ll18l)y*&mx=$r8!tcbwou3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -70,6 +70,9 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': [],
         'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': []
+        }
     },
 ]
 

@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import TemplateView
 from gallery_app.models import Album, Photo
 
@@ -20,3 +21,9 @@ class PhotoView(TemplateView):
         context['photo_list'] = Photo.objects.all()
 
         return context
+
+def custom_404(request):
+    return render(request, 'custom_404.html')
+
+def custom_500(request):
+    return render(request, 'custom_500.html')

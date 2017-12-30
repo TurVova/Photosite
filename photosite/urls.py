@@ -20,3 +20,6 @@ urlpatterns = [
         path('', include('gallery_app.urls')),
         path('admin/', admin.site.urls),
 ]
+
+handler404  = 'gallery_app.views.custom_404'
+handler500  = 'gallery_app.views.custom_500'
