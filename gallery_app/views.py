@@ -5,6 +5,7 @@ from gallery_app.models import Album, Photo
 class IndexView(TemplateView):
     template_name = 'index.html'
 
+
 class AlbumView(TemplateView):
     template_name = 'gallery/album.html'
 
@@ -24,8 +25,10 @@ class PhotoView(TemplateView):
 
         return context
 
+
 def custom_404(request):
     return render(request, '404.html')
+
 
 def custom_500(request):
     return render(request, '500.html')

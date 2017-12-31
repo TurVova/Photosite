@@ -6,9 +6,9 @@ from gallery_app.views import AlbumView, PhotoView, IndexView
 
 
 urlpatterns = [
+        path('', IndexView.as_view(), name='index'),
         path('albums/', AlbumView.as_view(), name='album'),
         path('photos/', PhotoView.as_view(), name='photo'),
-        path('', IndexView.as_view(), name='index'),
     ]
 
 
