@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from photosite import views
+
 urlpatterns = [
-        path('', include('gallery_app.urls')),
+        path('albums/', include('gallery_app.urls')),
         path('admin/', admin.site.urls),
+        path('', views.home_page, name='home'),
 ]
 
-handler404  = 'gallery_app.views.custom_404'
-handler500  = 'gallery_app.views.custom_500'
+handler404  = 'views.custom_404'
+handler500  = 'views.custom_500'

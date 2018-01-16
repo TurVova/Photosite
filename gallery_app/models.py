@@ -2,6 +2,7 @@ from django.db import models
 
 class Album(models.Model):
     name = models.CharField(max_length=30)
+    slug = models.SlugField()
     width = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
     image = models.ImageField(null=False, blank=False,
@@ -17,7 +18,7 @@ class Album(models.Model):
 
 
 class Photo(models.Model):
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    album = models.ForeignKey('Album', on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
     width = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
