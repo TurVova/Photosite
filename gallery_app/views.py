@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.shortcuts import render
 from gallery_app.models import Album, Photo
 
 
@@ -22,5 +22,9 @@ class PhotoView(TemplateView):
 
         return context
 
+def album_list(request):
+    albums = Album.objects.all()
+    for album in albums:
+        photos = Album.objects.get(name=album).photo_set.all()
 
-
+    return render(request, 'gallery/photo_list.html', {'ob_list' : photos})

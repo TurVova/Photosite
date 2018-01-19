@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% for albums in ob_list %}
+    <h2>{{ albums.name }}</h2>
+    <!-- {% for photos in albums.photo_set.all %}
+      <p>{{ photos.name }}</p>
+
+    {% endfor %} -->
+
+  {% endfor %}
+{% endblock content %}

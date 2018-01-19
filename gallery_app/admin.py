@@ -5,6 +5,7 @@ from gallery_app.models import Album, Photo
 
 class AlbumAdmin(admin.ModelAdmin):
     list_display = ['name', 'create']
+    prepopulated_fields = {"slug": ("name",)}
 
     class Meta:
         model = Album
