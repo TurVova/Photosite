@@ -1,11 +1,59 @@
 {% extends 'base.html' %}
-{% block content %}
-  {% for albums in ob_list %}
-    <h2>{{ albums.name }}</h2>
-    <!-- {% for photos in albums.photo_set.all %}
-      <p>{{ photos.name }}</p>
-
-    {% endfor %} -->
-
-  {% endfor %}
-{% endblock content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="{% static 'gallery/css/album.css' %}">
+    <title>
+      {% block title %}
+          {{ get_slug.name }}
+      {% endblock title %}
+    </title>
+    {% endblock head %}}
+  </head>
+  <body>
+    {% block content %}
+      <main role="main">
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <div class="row">
+              {% for album in albums %}
+                {% if get_slug.name == album.name %}
+                  {% for photos in album.photo_set.all %}
+                    {% if photos.image %}
+                      <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                          <a href="{{ photos.image.url }}">
+                            <img class="card-img-top" src="{{ photos.image.url }}" alt="{{ album.name }}"
+                              data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail">
+                          </a>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </main>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="{% static 'gallery/js/jquery-slim.min.js' %}"><\/script>')</script>
+      <script src="{% static 'gallery/js/popper.min.js' %}"></script>
+      <script src="{% static 'gallery/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'gallery/js/holder.min.js' %}"></script>
+      <script>
+        Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+        });
+      </script>
+    {% endblock content %}
+  </body>
+</html>

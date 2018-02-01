@@ -19,7 +19,7 @@ from django.urls import path, include
 from photosite import views
 
 urlpatterns = [
-        path('albums/', include('gallery_app.urls')),
+        path('', include('gallery_app.urls')),
         path('admin/', admin.site.urls),
         path('', views.home_page, name='home'),
 ]

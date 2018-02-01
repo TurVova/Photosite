@@ -2,14 +2,14 @@ from django.urls import path
 from django.conf.urls.static import static
 
 from photosite import settings
-from gallery_app.views import AlbumView, PhotoView
+from gallery_app.views import PhotosView, AlbumsView
 from . import views
 
 
 urlpatterns = [
-        path('', AlbumView.as_view(), name='album'),
-        path('photos/', PhotoView.as_view(), name='photo'),
-        path('all/', views.album_list, name='ob_list')
+        path('albums/', AlbumsView.as_view(), name='albums'),
+        path('photos/', PhotosView.as_view(), name='photos'),
+        path('album/<slug:album_slug>/', views.get_album, name='album_photo'),
     ]
 
 

@@ -1,56 +1,55 @@
 {% extends "base.html" %}
-
-{% block head %}
-  <link href="gallery/css/album.css"
-        rel="stylesheet">
-{% endblock head %}
-
-{% block title %}Photos{% endblock title  %}
-
-{% block content %}
-  <div class="album text-muted">
-    <div class="container">
-      <div class="row">
-        {% for photo in photo_list %}
-          {% if photo.image %}
-            <div class="card">
-              <a href="{{ photo.image.url }}">
-                <img src="{{ photo.image.url }}" alt="{{ photo.name }}">
-              </a>
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../../../favicon.ico">
+      <link rel="stylesheet" href="{% static 'gallery/css/album.css' %}">
+      <title>
+        {% block title %}
+          Photos
+        {% endblock title %}
+      </title>
+    {% endblock head %}}
+  </head>
+  <body>
+    {% block content %}
+      <main role="main">
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <div class="row">
+              {% for photo in photo_list %}
+                {% if photo.image %}
+                  <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                      <a href="{{ photo.image.url }}">
+                        <img class="card-img-top" src="{{ photo.image.url }}" alt="{{ photo.name }}"
+                          data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail">
+                      </a>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
             </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-          crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write(
-          '<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
-  </script>
-  <script src="../../../../assets/js/vendor/popper.min.js"></script>
-  <script src="../../../../dist/js/bootstrap.min.js"></script>
-  <script src="../../../../assets/js/vendor/holder.min.js"></script>
-  <script>
-    Holder.addTheme('thumb', {
-      bg: '#55595c',
-      fg: '#eceeef',
-      text: 'Thumbnail'
-    });
-  </script>
-{% endblock content %}
-
-
-
-
-{#<!--
-  {% for photo in photo_list %}
-    {% if photo.name %}
-        <h1>{{ photo.name }}</h1>
-        <a href="{{ photo.image.url }}">
-          <img src="{{ photo.image.url }}" class="img-responsive" >
-        </a>
-    {% endif %}
-  {% endfor %}
--->#}
+          </div>
+        </div>
+      </main>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="{% static 'gallery/js/jquery-slim.min.js' %}"><\/script>')</script>
+      <script src="{% static 'gallery/js/popper.min.js' %}"></script>
+      <script src="{% static 'gallery/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'gallery/js/holder.min.js' %}"></script>
+      <script>
+        Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+        });
+      </script>
+    {% endblock content %}
+  </body>
+</html>

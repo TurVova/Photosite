@@ -1,9 +1,9 @@
-from django.views.generic import TemplateView
-from django.shortcuts import render
+from django.views.generic import TemplateView, DetailView
+from django.shortcuts import render, redirect
 from gallery_app.models import Album, Photo
 
 
-class AlbumView(TemplateView):
+class AlbumsView(TemplateView):
     template_name = 'gallery/album.html'
 
     def get_context_data(self, **kwargs):
@@ -13,7 +13,7 @@ class AlbumView(TemplateView):
         return context
 
 
-class PhotoView(TemplateView):
+class PhotosView(TemplateView):
     template_name = 'gallery/photo.html'
 
     def get_context_data(self, **kwargs):
@@ -22,9 +22,12 @@ class PhotoView(TemplateView):
 
         return context
 
-def album_list(request):
+def get_album(request, album_slug):
     albums = Album.objects.all()
-    for album in albums:
-        photos = Album.objects.get(name=album).photo_set.all()
+    get_slug = Album.objects.get(slug=album_slug)
+    context = {
+        'albums' : albums,
+        'get_slug' : get_slug,
+    }
 
-    return render(request, 'gallery/photo_list.html', {'ob_list' : photos})
+    return render(request, 'gallery/photo_list.html', context)
