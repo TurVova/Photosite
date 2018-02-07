@@ -4,7 +4,7 @@ from blog.models import User, Post
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['name', 'last_name', 'create']
+    list_display = ['name', 'last_name', 'email', 'create']
     date_hierarchy = 'create'
     list_per_page = 15
     

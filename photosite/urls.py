@@ -20,6 +20,7 @@ from photosite import views
 
 urlpatterns = [
         path('', include('gallery_app.urls')),
+        path('', include('blog.urls')),
         path('admin/', admin.site.urls),
         path('', views.home_page, name='home'),
 ]
