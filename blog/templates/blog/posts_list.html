@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Posts</title>
+    </head>
+    <body>
+        {% block content %}
+            {% for post in object_list %}
+                <a class="nav-link" href="{% url 'posts_detail' post.slug %}"><h1>{{ post.title }}</h1></a>
+                <p>{{ post.snippet }}</p>
+                <h4>{{ post.user }}</h4>
+            {% endfor %}
+        {% endblock content %}
+    </body>
+</html>

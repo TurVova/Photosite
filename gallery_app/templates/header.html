@@ -1,0 +1,42 @@
+<header>
+        <div class="menu left">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'albums' %}" class="nav-link">Albums</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'photos' %}" class="nav-link">Photos</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'posts_list' %}" class="nav-link">Blog</a>
+                    </li>
+                    <li>
+                        <a href="" class="navigation">item5</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="menu right">
+            <ul>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="#" class="nav-link">{{ user.username }}</a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}" class="nav-link">Registration</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>

@@ -1,22 +1,15 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
+from blog.models import Post
 
-from blog.models import User, Post
-
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['name', 'last_name', 'email', 'create']
-    date_hierarchy = 'create'
-    list_per_page = 15
-    
-    class Meta:
-        model = User
         
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SummernoteModelAdmin):
     list_display = ['title', 'user', 'create']
     date_hierarchy = 'create'
     prepopulated_fields = {'slug': ('title',)}
     list_per_page = 15
+    summernote_fields = ('text',)
 
     class Meta:
         model = Post

@@ -31,8 +31,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'blog',
     'gallery_app',
+    'django_summernote',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,4 +134,6 @@ STATIC_URL = '/static/'
 
 
 MEDIA_URL = '/photo/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "gallery_app/mediafiles")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "mediafiles")
+
+LOGIN_REDIRECT_URL = '/'
